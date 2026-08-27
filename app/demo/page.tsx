@@ -37,18 +37,18 @@ export default function DemoJudgePage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6 bg-[#F7F7F5]">
       {/* Judge Mode Institutional Banner */}
-      <div className="bg-[#4A3026] text-[#F3EBDD] rounded-lg p-6 border border-[#37231B] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-md text-left">
+      <div className="bg-[#432F28] text-[#F1ECE4] rounded-lg p-6 border border-[#32221D] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-md text-left">
         <div className="space-y-1.5">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#5B477D] text-white rounded text-[10px] font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#62507D] text-white rounded text-[10px] font-bold uppercase tracking-wider">
             <Sparkles className="w-3 h-3 text-amber-200" />
             JUDGE DEMO MODE
           </div>
           <h1 className="text-xl sm:text-3xl font-extrabold tracking-tight uppercase">
             Judge Demo Mode Console
           </h1>
-          <p className="text-xs text-[#E8DDCC] max-w-xl">
+          <p className="text-xs text-[#F1ECE4] max-w-xl font-medium">
             Optimized for 90-second judge evaluation. Operates 100% deterministically offline without external API dependencies.
           </p>
         </div>
@@ -56,9 +56,9 @@ export default function DemoJudgePage() {
         {/* Reset Demo Button */}
         <button
           onClick={handleResetDemo}
-          className="px-4 py-2.5 bg-[#F3EBDD] hover:bg-[#E8DDCC] text-[#4A3026] font-bold text-xs rounded shadow-2xs transition-all flex items-center gap-2 shrink-0 border border-[#D7CBBB]"
+          className="px-4 py-2.5 bg-[#FFFFFF] hover:bg-[#F1ECE4] text-[#432F28] font-bold text-xs rounded shadow-2xs transition-all flex items-center gap-2 shrink-0 border border-[#D8D2CA]"
         >
-          <RefreshCw className="w-4 h-4 text-[#4A3026]" />
+          <RefreshCw className="w-4 h-4 text-[#432F28]" />
           <span>Reset Demo</span>
         </button>
       </div>
@@ -70,11 +70,11 @@ export default function DemoJudgePage() {
       />
 
       {/* View Switcher Tabs */}
-      <div className="flex items-center gap-2 border-b border-[#D7CBBB] pb-2 overflow-x-auto">
+      <div className="flex items-center gap-2 border-b border-[#D8D2CA] pb-2 overflow-x-auto">
         <button
           onClick={() => setActiveTab('DIAGNOSIS')}
           className={`px-4 py-2 rounded-md text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap ${
-            activeTab === 'DIAGNOSIS' ? 'bg-[#4A3026] text-white shadow-2xs' : 'bg-[#E8DDCC]/60 text-[#292421] hover:bg-[#E8DDCC]'
+            activeTab === 'DIAGNOSIS' ? 'bg-[#432F28] text-white shadow-2xs' : 'bg-[#FFFFFF] text-[#262321] border border-[#D8D2CA] hover:bg-[#F1ECE4]'
           }`}
         >
           <ShieldCheck className="w-4 h-4" />
@@ -84,7 +84,7 @@ export default function DemoJudgePage() {
         <button
           onClick={() => setActiveTab('GRIEVANCE')}
           className={`px-4 py-2 rounded-md text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap ${
-            activeTab === 'GRIEVANCE' ? 'bg-[#276749] text-white shadow-2xs' : 'bg-[#E8DDCC]/60 text-[#292421] hover:bg-[#E8DDCC]'
+            activeTab === 'GRIEVANCE' ? 'bg-[#26734A] text-white shadow-2xs' : 'bg-[#FFFFFF] text-[#262321] border border-[#D8D2CA] hover:bg-[#F1ECE4]'
           }`}
         >
           <FileText className="w-4 h-4" />
@@ -94,7 +94,7 @@ export default function DemoJudgePage() {
         <button
           onClick={() => setActiveTab('REJECTION')}
           className={`px-4 py-2 rounded-md text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap ${
-            activeTab === 'REJECTION' ? 'bg-[#A33A3A] text-white shadow-2xs' : 'bg-[#E8DDCC]/60 text-[#292421] hover:bg-[#E8DDCC]'
+            activeTab === 'REJECTION' ? 'bg-[#A33A3A] text-white shadow-2xs' : 'bg-[#FFFFFF] text-[#262321] border border-[#D8D2CA] hover:bg-[#F1ECE4]'
           }`}
         >
           <FileText className="w-4 h-4" />
@@ -104,7 +104,7 @@ export default function DemoJudgePage() {
         <button
           onClick={() => setActiveTab('SCAM')}
           className={`px-4 py-2 rounded-md text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap ${
-            activeTab === 'SCAM' ? 'bg-[#B7791F] text-white shadow-2xs' : 'bg-[#E8DDCC]/60 text-[#292421] hover:bg-[#E8DDCC]'
+            activeTab === 'SCAM' ? 'bg-[#B7791F] text-white shadow-2xs' : 'bg-[#FFFFFF] text-[#262321] border border-[#D8D2CA] hover:bg-[#F1ECE4]'
           }`}
         >
           <AlertTriangle className="w-4 h-4" />

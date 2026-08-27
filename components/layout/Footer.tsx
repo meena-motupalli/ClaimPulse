@@ -4,29 +4,29 @@ import { FileText, ShieldCheck, ExternalLink, Lock } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#4A3026] text-[#F3EBDD] border-t border-[#37231B] text-xs">
+    <footer className="bg-[#432F28] text-[#F1ECE4] border-t border-[#32221D] text-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-left">
           {/* Col 1: Brand & Disclaimer */}
           <div className="space-y-3">
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded bg-[#5B477D] flex items-center justify-center text-white font-bold shrink-0 border border-white/20">
-                <FileText className="w-4 h-4 text-[#F3EBDD]" />
+              <div className="w-8 h-8 rounded bg-[#62507D] flex items-center justify-center text-white font-bold shrink-0 border border-white/20">
+                <FileText className="w-4 h-4 text-[#F1ECE4]" />
               </div>
               <span className="text-base font-bold text-white tracking-tight">ClaimPulse</span>
             </div>
             <p className="text-amber-200 font-bold uppercase tracking-wider text-[10px]">
               Independent Citizen-Service Prototype
             </p>
-            <p className="text-[11px] text-[#E8DDCC] leading-relaxed">
+            <p className="text-[11px] text-[#F1ECE4]/80 leading-relaxed">
               Turning opaque public claim status strings into a clear visual journey and actionable next steps.
             </p>
-            <div className="p-3 bg-[#37231B] rounded border border-[#5B477D]/40 text-[11px] text-[#F3EBDD] space-y-1">
-              <div className="flex items-center gap-1 font-semibold text-[#276749]">
+            <div className="p-3 bg-[#32221D] rounded border border-[#62507D]/40 text-[11px] text-[#F1ECE4] space-y-1">
+              <div className="flex items-center gap-1 font-semibold text-[#26734A]">
                 <Lock className="w-3.5 h-3.5 shrink-0 text-emerald-400" />
                 Privacy & Safety Guarantee
               </div>
-              <p className="text-[10px] text-[#E8DDCC]">
+              <p className="text-[10px] text-[#F1ECE4]/70">
                 Never enter UAN Password, OTP, Aadhaar, PAN, or Bank credentials.
               </p>
             </div>
@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
           {/* Col 2: Navigation */}
           <div className="space-y-2">
             <h4 className="font-bold text-white uppercase tracking-wider text-[11px]">Services & Navigation</h4>
-            <ul className="space-y-1.5 text-xs text-[#E8DDCC]">
+            <ul className="space-y-1.5 text-xs text-[#F1ECE4]/80">
               <li>
                 <Link href="/" className="hover:text-white transition-colors">
                   Home Overview
@@ -72,10 +72,10 @@ export const Footer: React.FC = () => {
           {/* Col 3: Safety & Disclaimers */}
           <div className="space-y-2">
             <h4 className="font-bold text-white uppercase tracking-wider text-[11px]">Safety & Disclaimers</h4>
-            <ul className="space-y-1.5 text-xs text-[#E8DDCC]">
+            <ul className="space-y-1.5 text-xs text-[#F1ECE4]/80">
               <li>
                 <Link href="/scam-shield" className="hover:text-white transition-colors flex items-center gap-1">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#5B477D]" />
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#62507D]" />
                   PF Scam Shield
                 </Link>
               </li>
@@ -95,7 +95,7 @@ export const Footer: React.FC = () => {
           {/* Col 4: Verified Official Sources */}
           <div className="space-y-2">
             <h4 className="font-bold text-white uppercase tracking-wider text-[11px]">Verified Official Sources</h4>
-            <p className="text-[10px] text-[#E8DDCC]">
+            <p className="text-[10px] text-[#F1ECE4]/80">
               Official filings and portal access:
             </p>
             <ul className="space-y-1.5 text-xs">
@@ -107,7 +107,7 @@ export const Footer: React.FC = () => {
                   className="hover:text-white text-amber-200 flex items-center gap-1 font-semibold"
                 >
                   <span>EPFO Member e-Sewa</span>
-                  <span className="text-[9px] font-mono text-[#E8DDCC] font-normal">(Official source)</span>
+                  <span className="text-[9px] font-mono text-[#F1ECE4]/60 font-normal">(Official source)</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
@@ -119,7 +119,7 @@ export const Footer: React.FC = () => {
                   className="hover:text-white text-amber-200 flex items-center gap-1 font-semibold"
                 >
                   <span>EPFiGMS Grievance Portal</span>
-                  <span className="text-[9px] font-mono text-[#E8DDCC] font-normal">(Official source)</span>
+                  <span className="text-[9px] font-mono text-[#F1ECE4]/60 font-normal">(Official source)</span>
                   <ExternalLink className="w-3 h-3" />
                 </a>
               </li>
@@ -127,7 +127,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="pt-6 border-t border-[#37231B] flex flex-col sm:flex-row justify-between items-center gap-2 text-[11px] text-[#E8DDCC]">
+        <div className="pt-6 border-t border-[#32221D] flex flex-col sm:flex-row justify-between items-center gap-2 text-[11px] text-[#F1ECE4]/70">
           <p>© 2026 ClaimPulse Prototype. Built for Hackathon demonstration.</p>
           <p className="text-amber-200 font-medium">ClaimPulse is an independent prototype and is not affiliated with or operated by EPFO.</p>
         </div>

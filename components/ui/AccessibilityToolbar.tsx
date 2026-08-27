@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Info, Volume2, Type, Eye, Sparkles, HelpCircle } from 'lucide-react';
+import { Type, HelpCircle } from 'lucide-react';
 import { useToast } from '@/components/ui/Toast';
 
 export const AccessibilityToolbar: React.FC = () => {
@@ -43,14 +43,12 @@ export const AccessibilityToolbar: React.FC = () => {
 
   return (
     <div className="w-full font-sans text-xs">
-      {/* 1. TOP INSTITUTIONAL BAR */}
-      <div className="bg-[#4A3026] text-[#F3EBDD] py-1.5 px-4 sm:px-6 lg:px-8 border-b border-[#37231B] flex flex-col sm:flex-row justify-between items-center gap-2">
+      {/* 1. TOP UTILITY STRIP */}
+      <div className="bg-[#432F28] text-[#F1ECE4] py-1.5 px-4 sm:px-6 lg:px-8 border-b border-[#32221D] flex flex-col sm:flex-row justify-between items-center gap-2">
         <div className="flex items-center gap-2 font-mono text-[11px] tracking-wide font-semibold">
           <span className="font-bold text-white">CLAIMPULSE</span>
           <span className="opacity-40">|</span>
-          <span className="text-[#E8DDCC]">Independent Citizen-Service Prototype</span>
-          <span className="hidden md:inline opacity-40">|</span>
-          <span className="hidden md:inline text-amber-200">For Demonstration Purposes Only</span>
+          <span className="text-[#F1ECE4]">Independent Citizen-Service Prototype</span>
         </div>
 
         {/* Accessibility & Language Controls */}
@@ -67,23 +65,23 @@ export const AccessibilityToolbar: React.FC = () => {
           <span className="opacity-40">|</span>
 
           {/* Font Size Controls */}
-          <div className="flex items-center gap-1 bg-[#37231B] px-2 py-0.5 rounded border border-[#5B477D]/50 text-[10px]">
-            <Type className="w-3 h-3 text-[#F3EBDD]" />
+          <div className="flex items-center gap-1 bg-[#32221D] px-2 py-0.5 rounded border border-[#62507D]/50 text-[10px]">
+            <Type className="w-3 h-3 text-[#F1ECE4]" />
             <button
               onClick={() => setFontSize('normal')}
-              className={`px-1 rounded ${fontSize === 'normal' ? 'bg-[#5B477D] font-bold text-white' : 'hover:text-white'}`}
+              className={`px-1 rounded ${fontSize === 'normal' ? 'bg-[#62507D] font-bold text-white' : 'hover:text-white'}`}
             >
               A
             </button>
             <button
               onClick={() => setFontSize('large')}
-              className={`px-1 rounded ${fontSize === 'large' ? 'bg-[#5B477D] font-bold text-white' : 'hover:text-white'}`}
+              className={`px-1 rounded ${fontSize === 'large' ? 'bg-[#62507D] font-bold text-white' : 'hover:text-white'}`}
             >
               A+
             </button>
             <button
               onClick={() => setFontSize('xlarge')}
-              className={`px-1 rounded ${fontSize === 'xlarge' ? 'bg-[#5B477D] font-bold text-white' : 'hover:text-white'}`}
+              className={`px-1 rounded ${fontSize === 'xlarge' ? 'bg-[#62507D] font-bold text-white' : 'hover:text-white'}`}
             >
               A++
             </button>
@@ -98,7 +96,7 @@ export const AccessibilityToolbar: React.FC = () => {
               showToast(reduceMotion ? 'Animations enabled' : 'Motion reduced', 'info');
             }}
             className={`px-1.5 py-0.5 rounded border text-[10px] transition-colors ${
-              reduceMotion ? 'bg-[#5B477D] border-[#5B477D] text-white font-bold' : 'border-[#665D56] hover:text-white'
+              reduceMotion ? 'bg-[#62507D] border-[#62507D] text-white font-bold' : 'border-[#6B625D] hover:text-white'
             }`}
           >
             Motion {reduceMotion ? 'Off' : 'On'}
@@ -111,7 +109,7 @@ export const AccessibilityToolbar: React.FC = () => {
               showToast(highContrast ? 'Standard contrast restored' : 'High contrast mode enabled', 'info');
             }}
             className={`px-1.5 py-0.5 rounded border text-[10px] transition-colors ${
-              highContrast ? 'bg-amber-400 border-amber-400 text-[#292421] font-bold' : 'border-[#665D56] hover:text-white'
+              highContrast ? 'bg-amber-400 border-amber-400 text-[#262321] font-bold' : 'border-[#6B625D] hover:text-white'
             }`}
           >
             Contrast
@@ -124,19 +122,19 @@ export const AccessibilityToolbar: React.FC = () => {
             href="/about#help"
             className="hover:text-white flex items-center gap-1 font-semibold text-[11px]"
           >
-            <HelpCircle className="w-3 h-3 text-[#5B477D]" />
+            <HelpCircle className="w-3 h-3 text-[#62507D]" />
             <span>Help</span>
           </a>
         </div>
       </div>
 
       {/* 2. GOVERNMENT NOTICE BAR */}
-      <div className="bg-[#E8DDCC] text-[#292421] border-b border-[#D7CBBB] py-2 px-4 sm:px-6 lg:px-8">
+      <div className="bg-[#F1ECE4] text-[#262321] border-b border-[#D8D2CA] py-2 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex items-center gap-2 text-xs">
-          <div className="w-4 h-4 rounded-full bg-[#5B477D] text-white flex items-center justify-center font-bold text-[10px] shrink-0">
+          <div className="w-4 h-4 rounded-full bg-[#62507D] text-white flex items-center justify-center font-bold text-[10px] shrink-0">
             ⓘ
           </div>
-          <p className="leading-snug">
+          <p className="leading-snug text-left">
             <strong>Government Service Prototype Notice:</strong> ClaimPulse is an independent prototype designed to help citizens understand public-service claim journeys.
           </p>
         </div>

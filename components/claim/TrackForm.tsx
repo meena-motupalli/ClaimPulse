@@ -78,23 +78,23 @@ export const TrackForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#FFFDF8] rounded-lg border border-[#D7CBBB] p-6 sm:p-8 shadow-2xs max-w-2xl mx-auto space-y-6">
+    <div className="bg-[#FFFFFF] rounded-lg border border-[#D8D2CA] p-6 sm:p-8 shadow-2xs max-w-2xl mx-auto space-y-6">
       {/* Title & Guidance Header */}
-      <div className="border-b border-[#D7CBBB] pb-4 space-y-1">
-        <h1 className="text-xl sm:text-2xl font-bold text-[#4A3026] uppercase tracking-wide">Track Your Claim</h1>
-        <p className="text-xs text-[#665D56] leading-relaxed">
+      <div className="border-b border-[#D8D2CA] pb-4 space-y-1 text-left">
+        <h1 className="text-xl sm:text-2xl font-bold text-[#432F28] uppercase tracking-wide">Track Your Claim</h1>
+        <p className="text-xs text-[#6B625D] leading-relaxed">
           Enter the information available to you. Do not enter passwords, OTPs, Aadhaar numbers, PAN numbers, bank credentials, or other sensitive information.
         </p>
       </div>
 
       {/* Screenshot Extractor Section with Privacy Notice */}
-      <div className="space-y-3">
-        <div className="p-3.5 bg-[#F3EBDD] border border-[#D7CBBB] rounded-md text-xs text-[#292421] space-y-1">
-          <h3 className="font-bold flex items-center gap-1.5 text-[#4A3026]">
-            <Lock className="w-4 h-4 text-[#276749] shrink-0" />
+      <div className="space-y-3 text-left">
+        <div className="p-3.5 bg-[#F1ECE4] border border-[#D8D2CA] rounded-md text-xs text-[#262321] space-y-1">
+          <h3 className="font-bold flex items-center gap-1.5 text-[#432F28]">
+            <Lock className="w-4 h-4 text-[#26734A] shrink-0" />
             Privacy Notice
           </h3>
-          <p className="text-[11px] leading-relaxed font-medium text-[#665D56]">
+          <p className="text-[11px] leading-relaxed font-medium text-[#6B625D]">
             Do not upload screenshots containing Aadhaar numbers, PAN numbers, UAN passwords, OTPs, or bank account credentials. Users should mask sensitive information prior to upload.
           </p>
         </div>
@@ -114,13 +114,13 @@ export const TrackForm: React.FC = () => {
       <form onSubmit={handleSubmit} className="space-y-4 text-left">
         {/* Claim Type */}
         <div className="space-y-1">
-          <label className="block text-xs font-bold text-[#4A3026] uppercase tracking-wider">
+          <label className="block text-xs font-bold text-[#432F28] uppercase tracking-wider">
             Claim Type <span className="text-[#A33A3A]">*</span>
           </label>
           <select
             value={claimType}
             onChange={(e) => setClaimType(e.target.value as ClaimType)}
-            className="w-full p-2.5 bg-[#FFFDF8] border border-[#D7CBBB] rounded-md text-xs text-[#292421] font-semibold focus:ring-2 focus:ring-[#4A3026]"
+            className="w-full p-2.5 bg-[#FFFFFF] border border-[#D8D2CA] rounded-md text-xs text-[#262321] font-semibold focus:ring-2 focus:ring-[#432F28]"
           >
             <option value="Form 19">Form 19 — Final PF Settlement</option>
             <option value="Form 10C">Form 10C — Pension Withdrawal Certificate</option>
@@ -128,33 +128,33 @@ export const TrackForm: React.FC = () => {
             <option value="Transfer">Form 13 — Account Transfer Claim</option>
             <option value="Other">Other / Unspecified Claim Type</option>
           </select>
-          <p className="text-[11px] text-[#665D56]">Select the official form type submitted on the portal.</p>
+          <p className="text-[11px] text-[#6B625D]">Select the official form type submitted on the portal.</p>
         </div>
 
         {/* Submission Date */}
         <div className="space-y-1">
-          <label className="block text-xs font-bold text-[#4A3026] uppercase tracking-wider">
+          <label className="block text-xs font-bold text-[#432F28] uppercase tracking-wider">
             Submission Date <span className="text-[#A33A3A]">*</span>
           </label>
           <input
             type="date"
             value={submissionDate}
             onChange={(e) => setSubmissionDate(e.target.value)}
-            className="w-full p-2.5 bg-[#FFFDF8] border border-[#D7CBBB] rounded-md text-xs text-[#292421] font-semibold focus:ring-2 focus:ring-[#4A3026]"
+            className="w-full p-2.5 bg-[#FFFFFF] border border-[#D8D2CA] rounded-md text-xs text-[#262321] font-semibold focus:ring-2 focus:ring-[#432F28]"
             required
           />
-          <p className="text-[11px] text-[#665D56]">Enter the submission date shown in your claim receipt.</p>
+          <p className="text-[11px] text-[#6B625D]">Enter the submission date shown in your claim receipt.</p>
         </div>
 
         {/* Current Reported Status */}
         <div className="space-y-1">
-          <label className="block text-xs font-bold text-[#4A3026] uppercase tracking-wider">
+          <label className="block text-xs font-bold text-[#432F28] uppercase tracking-wider">
             Current Reported Status <span className="text-[#A33A3A]">*</span>
           </label>
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value as ClaimStatusInput)}
-            className="w-full p-2.5 bg-[#FFFDF8] border border-[#D7CBBB] rounded-md text-xs text-[#292421] font-semibold focus:ring-2 focus:ring-[#4A3026]"
+            className="w-full p-2.5 bg-[#FFFFFF] border border-[#D8D2CA] rounded-md text-xs text-[#262321] font-semibold focus:ring-2 focus:ring-[#432F28]"
           >
             <option value="Claim Submitted">Claim Submitted at Portal</option>
             <option value="Under Process">Under Process (Field Office Review)</option>
@@ -163,7 +163,7 @@ export const TrackForm: React.FC = () => {
             <option value="Transfer Pending">Transfer Pending (Form 13)</option>
             <option value="KYC Issue">KYC / Bank Approval Pending</option>
           </select>
-          <p className="text-[11px] text-[#665D56]">Select the exact status string displayed on the portal.</p>
+          <p className="text-[11px] text-[#6B625D]">Select the exact status string displayed on the portal.</p>
         </div>
 
         {/* Conditional Rejection Remark Field */}
@@ -177,7 +177,7 @@ export const TrackForm: React.FC = () => {
               placeholder="e.g. Name mismatch, Bank account not verified..."
               value={rejectionReason}
               onChange={(e) => setRejectionReason(e.target.value)}
-              className="w-full p-2.5 bg-[#FFFDF8] border border-[#A33A3A]/40 rounded-md text-xs text-[#292421] font-semibold focus:ring-2 focus:ring-[#A33A3A]"
+              className="w-full p-2.5 bg-[#FFFFFF] border border-[#A33A3A]/40 rounded-md text-xs text-[#262321] font-semibold focus:ring-2 focus:ring-[#A33A3A]"
             />
             <p className="text-[11px] text-[#A33A3A]">Paste the rejection remark text to get plain-language corrective steps.</p>
           </div>
@@ -186,7 +186,7 @@ export const TrackForm: React.FC = () => {
         {/* Optional Context Fields */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1">
-            <label className="block text-xs font-bold text-[#4A3026] uppercase tracking-wider">
+            <label className="block text-xs font-bold text-[#432F28] uppercase tracking-wider">
               Employer / Establishment Name (Optional)
             </label>
             <input
@@ -194,12 +194,12 @@ export const TrackForm: React.FC = () => {
               placeholder="Acme Technologies Pvt Ltd"
               value={employerName}
               onChange={(e) => setEmployerName(e.target.value)}
-              className="w-full p-2.5 bg-[#FFFDF8] border border-[#D7CBBB] rounded-md text-xs text-[#292421] font-semibold"
+              className="w-full p-2.5 bg-[#FFFFFF] border border-[#D8D2CA] rounded-md text-xs text-[#262321] font-semibold"
             />
           </div>
 
           <div className="space-y-1">
-            <label className="block text-xs font-bold text-[#4A3026] uppercase tracking-wider">
+            <label className="block text-xs font-bold text-[#432F28] uppercase tracking-wider">
               EPFO Field Office (Optional)
             </label>
             <input
@@ -207,7 +207,7 @@ export const TrackForm: React.FC = () => {
               placeholder="RO Gurgaon (Haryana)"
               value={fieldOffice}
               onChange={(e) => setFieldOffice(e.target.value)}
-              className="w-full p-2.5 bg-[#FFFDF8] border border-[#D7CBBB] rounded-md text-xs text-[#292421] font-semibold"
+              className="w-full p-2.5 bg-[#FFFFFF] border border-[#D8D2CA] rounded-md text-xs text-[#262321] font-semibold"
             />
           </div>
         </div>
@@ -217,16 +217,16 @@ export const TrackForm: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="flex-1 py-3 bg-[#4A3026] hover:bg-[#37231B] text-[#FFFDF8] font-bold text-xs sm:text-sm rounded-md shadow-2xs transition-all flex items-center justify-center gap-2 border border-[#37231B] uppercase tracking-wider disabled:opacity-50"
+            className="flex-1 py-3 bg-[#432F28] hover:bg-[#32221D] text-[#FFFFFF] font-bold text-xs sm:text-sm rounded-md shadow-2xs transition-all flex items-center justify-center gap-2 border border-[#32221D] uppercase tracking-wider disabled:opacity-50"
           >
             <ShieldCheck className="w-4 h-4" />
-            <span>{isSubmitting ? 'Analyzing Claim...' : 'ANALYZE CLAIM'}</span>
+            <span>{isSubmitting ? 'Analyzing Claim...' : 'Track / Analyze Claim'}</span>
           </button>
 
           <button
             type="button"
             onClick={handleClearForm}
-            className="px-4 py-3 bg-[#FFFDF8] hover:bg-[#E8DDCC] text-[#4A3026] font-semibold text-xs sm:text-sm rounded-md border border-[#D7CBBB] transition-all flex items-center gap-1.5"
+            className="px-4 py-3 bg-[#FFFFFF] hover:bg-[#F1ECE4] text-[#432F28] font-semibold text-xs sm:text-sm rounded-md border border-[#D8D2CA] transition-all flex items-center gap-1.5"
           >
             <RotateCcw className="w-4 h-4" />
             <span>Clear</span>

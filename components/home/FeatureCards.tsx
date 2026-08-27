@@ -10,8 +10,8 @@ export const FeatureCards: React.FC = () => {
       icon: Search,
       href: '/track',
       badge: 'Core Service',
-      accentColor: 'border-l-4 border-l-[#4A3026]',
-      iconBg: 'bg-[#E8DDCC] text-[#4A3026]',
+      accentColor: 'border-l-4 border-l-[#432F28]',
+      iconBg: 'bg-[#F1ECE4] text-[#432F28]',
     },
     {
       title: 'Claim Diagnosis',
@@ -19,8 +19,8 @@ export const FeatureCards: React.FC = () => {
       icon: ShieldCheck,
       href: '/diagnosis',
       badge: 'SLA Engine',
-      accentColor: 'border-l-4 border-l-[#5B477D]',
-      iconBg: 'bg-[#5B477D]/10 text-[#5B477D]',
+      accentColor: 'border-l-4 border-l-[#62507D]',
+      iconBg: 'bg-[#62507D]/10 text-[#62507D]',
     },
     {
       title: 'Grievance Assistance',
@@ -28,8 +28,8 @@ export const FeatureCards: React.FC = () => {
       icon: FileText,
       href: '/grievance',
       badge: 'EPFiGMS Draft',
-      accentColor: 'border-l-4 border-l-[#276749]',
-      iconBg: 'bg-[#276749]/10 text-[#276749]',
+      accentColor: 'border-l-4 border-l-[#26734A]',
+      iconBg: 'bg-[#26734A]/10 text-[#26734A]',
     },
     {
       title: 'Scam Shield',
@@ -43,12 +43,12 @@ export const FeatureCards: React.FC = () => {
   ];
 
   return (
-    <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-      <div className="border-b border-[#D7CBBB] pb-3">
-        <h2 className="text-xl sm:text-2xl font-bold text-[#4A3026] tracking-tight">
+    <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-left">
+      <div className="border-b border-[#D8D2CA] pb-3">
+        <h2 className="text-xl sm:text-2xl font-bold text-[#432F28] tracking-tight">
           ClaimPulse Services
         </h2>
-        <p className="text-xs text-[#665D56]">
+        <p className="text-xs text-[#6B625D]">
           Structured tools designed for citizen understanding, risk evaluation, and official grievance preparation.
         </p>
       </div>
@@ -60,24 +60,24 @@ export const FeatureCards: React.FC = () => {
             <Link
               key={item.title}
               href={item.href}
-              className={`bg-[#FFFDF8] rounded-lg p-5 border border-[#D7CBBB] ${item.accentColor} shadow-2xs hover:shadow-xs transition-all flex flex-col justify-between space-y-3 group`}
+              className={`bg-[#FFFFFF] rounded-lg p-5 border border-[#D8D2CA] ${item.accentColor} shadow-2xs hover:shadow-xs transition-all flex flex-col justify-between space-y-3 group`}
             >
               <div className="space-y-2.5">
                 <div className="flex items-center justify-between">
-                  <div className={`w-8 h-8 rounded border border-[#D7CBBB] flex items-center justify-center shrink-0 ${item.iconBg}`}>
+                  <div className={`w-8 h-8 rounded border border-[#D8D2CA] flex items-center justify-center shrink-0 ${item.iconBg}`}>
                     <Icon className="w-4 h-4" />
                   </div>
-                  <span className="text-[10px] font-mono font-semibold px-2 py-0.5 bg-[#E8DDCC] text-[#292421] rounded border border-[#D7CBBB]">
+                  <span className="text-[10px] font-mono font-semibold px-2 py-0.5 bg-[#F1ECE4] text-[#262321] rounded border border-[#D8D8CA]">
                     {item.badge}
                   </span>
                 </div>
-                <h3 className="text-base font-bold text-[#4A3026] group-hover:text-[#5B477D] transition-colors">
+                <h3 className="text-base font-bold text-[#432F28] group-hover:text-[#62507D] transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-xs text-[#665D56] leading-relaxed">{item.description}</p>
+                <p className="text-xs text-[#6B625D] leading-relaxed">{item.description}</p>
               </div>
 
-              <div className="pt-2 border-t border-[#E8DDCC] flex items-center justify-between text-xs font-bold text-[#4A3026] group-hover:text-[#5B477D]">
+              <div className="pt-2 border-t border-[#F1ECE4] flex items-center justify-between text-xs font-bold text-[#432F28] group-hover:text-[#62507D]">
                 <span>Access Service</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </div>
