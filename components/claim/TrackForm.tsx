@@ -6,8 +6,7 @@ import { ClaimType, ClaimStatusInput } from '@/types/claim';
 import { saveClaim } from '@/lib/storage';
 import { ScreenshotExtractor } from '@/components/claim/ScreenshotExtractor';
 import { useToast } from '@/components/ui/Toast';
-import { ShieldCheck, Upload, AlertCircle, ArrowRight, Lock, CheckCircle2 } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { ShieldCheck, Lock, AlertCircle, ArrowRight, RotateCcw } from 'lucide-react';
 
 export const TrackForm: React.FC = () => {
   const router = useRouter();
@@ -30,6 +29,18 @@ export const TrackForm: React.FC = () => {
     if (extracted.fieldOffice) setFieldOffice(extracted.fieldOffice);
     if (extracted.rejectionReason) setRejectionReason(extracted.rejectionReason);
     showToast('Claim information extracted from screenshot.', 'success');
+  };
+
+  const handleClearForm = () => {
+    setClaimType('Form 19');
+    setSubmissionDate('2026-08-12');
+    setStatus('Claim Submitted');
+    setEmployerName('');
+    setFieldOffice('');
+    setRejectionReason('');
+    setUserNotes('');
+    setErrorMsg(null);
+    showToast('Form fields cleared.', 'info');
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -67,170 +78,160 @@ export const TrackForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/80 p-6 sm:p-8 shadow-sm max-w-2xl mx-auto space-y-6">
-      {/* Privacy Notice Banner */}
-      <div className="p-4 rounded-xl bg-blue-50 border border-blue-200/80 flex items-start gap-3">
-        <Lock className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-        <div>
-          <h4 className="text-xs font-bold uppercase tracking-wider text-blue-900 flex items-center gap-1.5">
-            Privacy-First Security Guarantee
-          </h4>
-          <p className="text-xs text-blue-800 mt-1 leading-relaxed">
-            Never enter your UAN password, OTP, Aadhaar number, PAN, or bank details. ClaimPulse processes claim status safely without accessing private credentials.
-          </p>
-        </div>
+    <div className="bg-white rounded-lg border border-slate-200 p-6 sm:p-8 shadow-2xs max-w-2xl mx-auto space-y-6">
+      {/* Title & Guidance Header */}
+      <div className="border-b border-slate-200 pb-4 space-y-1">
+        <h1 className="text-xl sm:text-2xl font-bold text-slate-900">Track Your Claim</h1>
+        <p className="text-xs text-slate-600 leading-relaxed">
+          Enter the information available to you. Do not enter passwords, OTPs, Aadhaar numbers, PAN numbers, bank credentials or other sensitive information.
+        </p>
       </div>
 
-      {/* Optional Screenshot Extractor Component */}
-      <ScreenshotExtractor onExtracted={handleExtracted} />
+      {/* Screenshot Extractor Section with Privacy Notice */}
+      <div className="space-y-3">
+        <div className="p-3 bg-amber-50 border border-amber-200 rounded-md text-xs text-amber-950 space-y-1">
+          <h3 className="font-bold flex items-center gap-1.5 text-amber-900">
+            <Lock className="w-4 h-4 text-amber-700 shrink-0" />
+            Privacy Notice
+          </h3>
+          <p className="text-[11px] leading-relaxed">
+            Do not upload screenshots containing Aadhaar numbers, PAN numbers, UAN passwords, OTPs, or bank account credentials. Users should mask sensitive information prior to upload.
+          </p>
+        </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+        <ScreenshotExtractor onExtracted={handleExtracted} />
+      </div>
+
+      {/* Error Alert */}
+      {errorMsg && (
+        <div className="p-3 bg-rose-50 border border-rose-200 text-rose-900 text-xs rounded-md flex items-center gap-2">
+          <AlertCircle className="w-4 h-4 text-rose-700 shrink-0" />
+          <span>{errorMsg}</span>
+        </div>
+      )}
+
+      {/* Form Fields */}
+      <form onSubmit={handleSubmit} className="space-y-4">
         {/* Claim Type */}
-        <div className="space-y-1.5">
-          <label className="block text-xs font-bold uppercase tracking-wider text-slate-700">
-            Claim Type <span className="text-rose-500">*</span>
+        <div className="space-y-1">
+          <label className="block text-xs font-bold text-slate-900 uppercase tracking-wider">
+            Claim Type <span className="text-rose-600">*</span>
           </label>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-            {(['Form 19', 'Form 10C', 'Form 31', 'Transfer', 'Other'] as ClaimType[]).map((type) => (
-              <button
-                type="button"
-                key={type}
-                onClick={() => setClaimType(type)}
-                className={cn(
-                  'px-3 py-2.5 rounded-xl border text-xs font-semibold text-center transition-all',
-                  claimType === type
-                    ? 'bg-blue-600 text-white border-blue-600 shadow-2xs'
-                    : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
-                )}
-              >
-                {type}
-              </button>
-            ))}
-          </div>
+          <select
+            value={claimType}
+            onChange={(e) => setClaimType(e.target.value as ClaimType)}
+            className="w-full p-2.5 bg-white border border-slate-300 rounded-md text-xs text-slate-900 font-semibold focus:ring-2 focus:ring-blue-800"
+          >
+            <option value="Form 19">Form 19 — Final PF Settlement</option>
+            <option value="Form 10C">Form 10C — Pension Withdrawal Certificate</option>
+            <option value="Form 31">Form 31 — PF Advance / Partial Withdrawal</option>
+            <option value="Transfer">Form 13 — Account Transfer Claim</option>
+            <option value="Other">Other / Unspecified Claim Type</option>
+          </select>
+          <p className="text-[11px] text-slate-500">Select the official form type submitted on the portal.</p>
         </div>
 
-        {/* Submission Date & Status */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="space-y-1.5">
-            <label htmlFor="submissionDate" className="block text-xs font-bold uppercase tracking-wider text-slate-700">
-              Submission Date <span className="text-rose-500">*</span>
-            </label>
-            <input
-              id="submissionDate"
-              type="date"
-              value={submissionDate}
-              onChange={(e) => setSubmissionDate(e.target.value)}
-              className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
-              required
-            />
-          </div>
-
-          <div className="space-y-1.5">
-            <label htmlFor="currentStatus" className="block text-xs font-bold uppercase tracking-wider text-slate-700">
-              Current Reported Status <span className="text-rose-500">*</span>
-            </label>
-            <select
-              id="currentStatus"
-              value={status}
-              onChange={(e) => setStatus(e.target.value as ClaimStatusInput)}
-              className="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="Claim Submitted">Claim Submitted</option>
-              <option value="Under Process">Under Process</option>
-              <option value="Settled">Settled</option>
-              <option value="Rejected">Rejected</option>
-              <option value="Transfer Pending">Transfer Pending</option>
-              <option value="KYC Issue">KYC Issue</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
+        {/* Submission Date */}
+        <div className="space-y-1">
+          <label className="block text-xs font-bold text-slate-900 uppercase tracking-wider">
+            Submission Date <span className="text-rose-600">*</span>
+          </label>
+          <input
+            type="date"
+            value={submissionDate}
+            onChange={(e) => setSubmissionDate(e.target.value)}
+            className="w-full p-2.5 bg-white border border-slate-300 rounded-md text-xs text-slate-900 font-semibold focus:ring-2 focus:ring-blue-800"
+            required
+          />
+          <p className="text-[11px] text-slate-500">Enter the submission date shown in your claim receipt.</p>
         </div>
 
-        {/* Rejection Reason if Rejected */}
+        {/* Current Reported Status */}
+        <div className="space-y-1">
+          <label className="block text-xs font-bold text-slate-900 uppercase tracking-wider">
+            Current Reported Status <span className="text-rose-600">*</span>
+          </label>
+          <select
+            value={status}
+            onChange={(e) => setStatus(e.target.value as ClaimStatusInput)}
+            className="w-full p-2.5 bg-white border border-slate-300 rounded-md text-xs text-slate-900 font-semibold focus:ring-2 focus:ring-blue-800"
+          >
+            <option value="Claim Submitted">Claim Submitted at Portal</option>
+            <option value="Under Process">Under Process (Field Office Review)</option>
+            <option value="Settled">Settled (Amount Disbursed)</option>
+            <option value="Rejected">Rejected (Claim Returned/Rejected)</option>
+            <option value="Transfer Pending">Transfer Pending (Form 13)</option>
+            <option value="KYC Issue">KYC / Bank Approval Pending</option>
+          </select>
+          <p className="text-[11px] text-slate-500">Select the exact status string displayed on the portal.</p>
+        </div>
+
+        {/* Conditional Rejection Remark Field */}
         {status === 'Rejected' && (
-          <div className="space-y-1.5">
-            <label htmlFor="rejectionReason" className="block text-xs font-semibold text-rose-700">
-              Rejection Remark / Reason (Optional)
+          <div className="space-y-1 p-3 bg-rose-50 border border-rose-200 rounded-md">
+            <label className="block text-xs font-bold text-rose-950 uppercase tracking-wider">
+              Rejection Remark / Reason
             </label>
             <input
-              id="rejectionReason"
               type="text"
-              placeholder="e.g. Name mismatch between UAN profile and Aadhaar card"
+              placeholder="e.g. Name mismatch, Bank account not verified..."
               value={rejectionReason}
               onChange={(e) => setRejectionReason(e.target.value)}
-              className="w-full px-3.5 py-2 bg-rose-50/50 border border-rose-200 rounded-xl text-xs text-slate-900 focus:ring-2 focus:ring-rose-500"
+              className="w-full p-2.5 bg-white border border-rose-300 rounded-md text-xs text-slate-900 font-semibold focus:ring-2 focus:ring-rose-800"
             />
+            <p className="text-[11px] text-rose-900">Paste the rejection remark text to get plain-language corrective steps.</p>
           </div>
         )}
 
-        {/* Optional Metadata */}
+        {/* Optional Context Fields */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="space-y-1.5">
-            <label htmlFor="employerName" className="block text-xs font-semibold text-slate-600">
-              Employer / Establishment Name (Optional)
+          <div className="space-y-1">
+            <label className="block text-xs font-bold text-slate-900 uppercase tracking-wider">
+              Establishment / Employer Name (Optional)
             </label>
             <input
-              id="employerName"
               type="text"
-              placeholder="e.g. Acme Tech Pvt Ltd"
+              placeholder="Acme Technologies Pvt Ltd"
               value={employerName}
               onChange={(e) => setEmployerName(e.target.value)}
-              className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2.5 bg-white border border-slate-300 rounded-md text-xs text-slate-900 font-semibold"
             />
           </div>
 
-          <div className="space-y-1.5">
-            <label htmlFor="fieldOffice" className="block text-xs font-semibold text-slate-600">
+          <div className="space-y-1">
+            <label className="block text-xs font-bold text-slate-900 uppercase tracking-wider">
               EPFO Field Office (Optional)
             </label>
             <input
-              id="fieldOffice"
               type="text"
-              placeholder="e.g. RO Gurgaon"
+              placeholder="RO Gurgaon (Haryana)"
               value={fieldOffice}
               onChange={(e) => setFieldOffice(e.target.value)}
-              className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+              className="w-full p-2.5 bg-white border border-slate-300 rounded-md text-xs text-slate-900 font-semibold"
             />
           </div>
         </div>
 
-        {/* Notes */}
-        <div className="space-y-1.5">
-          <label htmlFor="userNotes" className="block text-xs font-semibold text-slate-600">
-            Notes / Reason for Claim (Optional)
-          </label>
-          <textarea
-            id="userNotes"
-            rows={2}
-            placeholder="Add context (e.g. Final settlement post resignation)"
-            value={userNotes}
-            onChange={(e) => setUserNotes(e.target.value)}
-            className="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
-          />
+        {/* Buttons */}
+        <div className="pt-2 flex items-center gap-3">
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="flex-1 py-3 bg-blue-800 hover:bg-blue-900 text-white font-bold text-xs sm:text-sm rounded-md shadow-xs transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+          >
+            <ShieldCheck className="w-4 h-4" />
+            <span>{isSubmitting ? 'Analyzing Claim...' : 'Analyze Claim'}</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={handleClearForm}
+            className="px-4 py-3 bg-white hover:bg-slate-100 text-slate-700 font-semibold text-xs sm:text-sm rounded-md border border-slate-300 transition-all flex items-center gap-1.5"
+          >
+            <RotateCcw className="w-4 h-4" />
+            <span>Clear</span>
+          </button>
         </div>
-
-        {errorMsg && (
-          <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 rounded-xl text-xs flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 shrink-0" />
-            <span>{errorMsg}</span>
-          </div>
-        )}
-
-        {/* Submit CTA */}
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full py-3.5 px-6 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm rounded-xl transition-all shadow-md shadow-blue-500/20 flex items-center justify-center gap-2 disabled:opacity-50"
-        >
-          {isSubmitting ? (
-            <span>Running Claim Intelligence Diagnostic...</span>
-          ) : (
-            <>
-              <span>Run Claim Intelligence Diagnostic</span>
-              <ArrowRight className="w-4 h-4" />
-            </>
-          )}
-        </button>
       </form>
     </div>
   );
