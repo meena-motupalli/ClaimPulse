@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import { AccessibilityToolbar } from '@/components/ui/AccessibilityToolbar';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ToastProvider } from '@/components/ui/Toast';
@@ -35,9 +34,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="bg-slate-50 text-slate-900 antialiased flex flex-col min-h-screen">
+      <body className="bg-[#F3EBDD] text-[#292421] antialiased flex flex-col min-h-screen">
         <ToastProvider>
-          <AccessibilityToolbar />
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
