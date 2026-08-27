@@ -70,15 +70,15 @@ export const AiScamAnalyzer: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg border border-slate-200 p-6 shadow-2xs space-y-5">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-200 pb-3">
+    <div className="bg-[#FFFDF8] rounded-lg border border-[#D7CBBB] p-6 shadow-2xs space-y-5 text-left">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-[#D7CBBB] pb-3">
         <div>
           <div className="flex items-center gap-2">
-            <ShieldAlert className="w-5 h-5 text-amber-700" />
-            <h1 className="text-xl font-bold text-slate-900">PF Scam Shield</h1>
+            <ShieldAlert className="w-5 h-5 text-[#A33A3A]" />
+            <h1 className="text-xl font-bold text-[#4A3026] uppercase">PF SCAM SHIELD</h1>
           </div>
-          <p className="text-xs text-slate-600">
-            Check suspicious SMS, WhatsApp, or email messages for common scam indicators.
+          <p className="text-xs text-[#665D56]">
+            Check suspicious PF-related messages for common scam indicators.
           </p>
         </div>
 
@@ -87,7 +87,7 @@ export const AiScamAnalyzer: React.FC = () => {
 
       {/* Preset Demo Selector */}
       <div className="space-y-1.5">
-        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+        <span className="text-[10px] font-bold uppercase tracking-wider text-[#665D56]">
           Try Judge Demo Preset Scenarios:
         </span>
         <div className="flex flex-wrap gap-2">
@@ -100,8 +100,8 @@ export const AiScamAnalyzer: React.FC = () => {
               }}
               className={`px-3 py-1.5 rounded text-xs font-semibold border transition-all ${
                 messageInput === preset.text
-                  ? 'bg-slate-900 text-white border-slate-900'
-                  : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                  ? 'bg-[#4A3026] text-white border-[#4A3026]'
+                  : 'bg-[#F3EBDD]/60 text-[#292421] border-[#D7CBBB] hover:bg-[#E8DDCC]'
               }`}
             >
               {preset.label}
@@ -112,7 +112,7 @@ export const AiScamAnalyzer: React.FC = () => {
 
       {/* Input Area */}
       <div className="space-y-2">
-        <label className="block text-xs font-bold text-slate-900 uppercase tracking-wider">
+        <label className="block text-xs font-bold text-[#4A3026] uppercase tracking-wider">
           Paste Message Below
         </label>
         <textarea
@@ -120,20 +120,20 @@ export const AiScamAnalyzer: React.FC = () => {
           value={messageInput}
           onChange={(e) => setMessageInput(e.target.value)}
           placeholder="Paste suspicious text message or email received regarding your PF account..."
-          className="w-full p-3 bg-slate-50 border border-slate-300 rounded text-xs text-slate-900 font-medium focus:ring-2 focus:ring-blue-800"
+          className="w-full p-3 bg-[#FFFDF8] border border-[#D7CBBB] rounded text-xs text-[#292421] font-medium focus:ring-2 focus:ring-[#4A3026]"
         />
 
         <button
           onClick={() => handleAnalyze()}
           disabled={isAnalyzing || !messageInput.trim()}
-          className="w-full py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs sm:text-sm rounded shadow-xs transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+          className="w-full py-2.5 bg-[#4A3026] hover:bg-[#37231B] text-[#FFFDF8] font-bold text-xs sm:text-sm rounded shadow-2xs transition-all flex items-center justify-center gap-2 border border-[#37231B] uppercase tracking-wider disabled:opacity-50"
         >
           {isAnalyzing ? (
             <span>Analyzing Message...</span>
           ) : (
             <>
               <Search className="w-4 h-4" />
-              <span>Analyze Message</span>
+              <span>ANALYZE MESSAGE</span>
             </>
           )}
         </button>
@@ -145,17 +145,17 @@ export const AiScamAnalyzer: React.FC = () => {
           <div
             className={cn(
               'p-5 rounded border space-y-4 shadow-2xs',
-              analysisResult.riskLevel === 'HIGH RISK' && 'bg-rose-50 border-rose-300 text-rose-950',
-              analysisResult.riskLevel === 'MODERATE RISK' && 'bg-amber-50 border-amber-300 text-amber-950',
-              analysisResult.riskLevel === 'LOW RISK / SAFE' && 'bg-emerald-50 border-emerald-300 text-emerald-950'
+              analysisResult.riskLevel === 'HIGH RISK' && 'bg-[#A33A3A]/10 border-[#A33A3A]/40 text-[#292421]',
+              analysisResult.riskLevel === 'MODERATE RISK' && 'bg-[#B7791F]/10 border-[#B7791F]/40 text-[#292421]',
+              analysisResult.riskLevel === 'LOW RISK / SAFE' && 'bg-[#276749]/10 border-[#276749]/40 text-[#292421]'
             )}
           >
             <div className="flex items-center justify-between border-b border-black/10 pb-2">
               <div className="flex items-center gap-2">
-                {analysisResult.riskLevel === 'HIGH RISK' && <XCircle className="w-5 h-5 text-rose-700" />}
-                {analysisResult.riskLevel === 'MODERATE RISK' && <AlertTriangle className="w-5 h-5 text-amber-700" />}
-                {analysisResult.riskLevel === 'LOW RISK / SAFE' && <CheckCircle2 className="w-5 h-5 text-emerald-700" />}
-                <h3 className="text-base font-bold">
+                {analysisResult.riskLevel === 'HIGH RISK' && <XCircle className="w-5 h-5 text-[#A33A3A]" />}
+                {analysisResult.riskLevel === 'MODERATE RISK' && <AlertTriangle className="w-5 h-5 text-[#B7791F]" />}
+                {analysisResult.riskLevel === 'LOW RISK / SAFE' && <CheckCircle2 className="w-5 h-5 text-[#276749]" />}
+                <h3 className="text-base font-bold uppercase">
                   Risk Level: {analysisResult.riskLevel}
                 </h3>
               </div>
@@ -165,7 +165,7 @@ export const AiScamAnalyzer: React.FC = () => {
 
             {/* Why Suspicious */}
             <div className="space-y-1 text-xs">
-              <h4 className="font-bold uppercase tracking-wider opacity-85">Why this may be suspicious:</h4>
+              <h4 className="font-bold uppercase tracking-wider opacity-85 text-[#4A3026]">Why this may be suspicious:</h4>
               <ul className="space-y-1 list-disc pl-4 leading-relaxed font-medium">
                 {analysisResult.whySuspicious.map((item, idx) => (
                   <li key={idx}>{item}</li>
@@ -174,9 +174,9 @@ export const AiScamAnalyzer: React.FC = () => {
             </div>
 
             {/* Stay Safe */}
-            <div className="p-3 bg-white/90 rounded border border-black/10 space-y-1 text-xs text-slate-800">
-              <h4 className="font-bold text-slate-900 flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-emerald-700" />
+            <div className="p-3 bg-[#FFFDF8] rounded border border-[#D7CBBB] space-y-1 text-xs text-[#292421]">
+              <h4 className="font-bold text-[#276749] flex items-center gap-1.5">
+                <ShieldCheck className="w-4 h-4 text-[#276749]" />
                 Stay Safe:
               </h4>
               <p className="leading-relaxed font-medium">{analysisResult.safeAction}</p>
@@ -184,18 +184,18 @@ export const AiScamAnalyzer: React.FC = () => {
 
             {/* What NOT to share */}
             <div className="space-y-1 text-xs">
-              <h4 className="font-bold uppercase tracking-wider text-rose-900 flex items-center gap-1">
+              <h4 className="font-bold uppercase tracking-wider text-[#A33A3A] flex items-center gap-1">
                 <Lock className="w-3.5 h-3.5" />
                 What NOT to share:
               </h4>
-              <ul className="space-y-1 list-disc pl-4 text-slate-700 font-medium">
+              <ul className="space-y-1 list-disc pl-4 text-[#292421] font-medium">
                 {analysisResult.whatNotToShare.map((item, idx) => (
                   <li key={idx}>{item}</li>
                 ))}
               </ul>
             </div>
 
-            <div className="pt-2 border-t border-black/10 text-[10px] opacity-80 leading-relaxed">
+            <div className="pt-2 border-t border-black/10 text-[10px] opacity-80 leading-relaxed text-[#665D56]">
               {analysisResult.disclaimer}
             </div>
           </div>

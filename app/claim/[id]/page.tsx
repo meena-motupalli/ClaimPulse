@@ -28,54 +28,54 @@ export default function ClaimDetailPage({ params }: ClaimDetailPageProps) {
       {/* Back Button */}
       <Link
         href="/claim"
-        className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors"
+        className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#665D56] hover:text-[#4A3026] transition-colors"
       >
         <ArrowLeft className="w-4 h-4" />
         Back to Claim History
       </Link>
 
       {/* Page Title */}
-      <div className="border-b border-slate-200 pb-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+      <div className="border-b border-[#D7CBBB] pb-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-slate-900">Claim Status Report</h1>
-          <p className="text-xs text-slate-600">
-            Reference Code: <span className="font-mono font-bold text-blue-900">{claim.id}</span>
+          <h1 className="text-xl sm:text-2xl font-bold text-[#4A3026] uppercase tracking-wide">CLAIM STATUS</h1>
+          <p className="text-xs text-[#665D56]">
+            Reference Code: <span className="font-mono font-bold text-[#5B477D]">{claim.id}</span>
           </p>
         </div>
-        <span className="text-xs font-mono font-bold px-3 py-1 bg-slate-100 text-slate-800 rounded border border-slate-200">
+        <span className="text-xs font-mono font-bold px-3 py-1 bg-[#E8DDCC] text-[#4A3026] rounded border border-[#D7CBBB]">
           Source: {claim.source === 'mock_extraction' ? 'Screenshot OCR' : 'Citizen Input'}
         </span>
       </div>
 
       {/* 1. STRUCTURED SUMMARY PANEL TABLE */}
-      <div className="bg-white rounded-lg border border-slate-200 p-5 shadow-2xs space-y-3">
-        <h2 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
+      <div className="bg-[#FFFDF8] rounded-lg border border-[#D7CBBB] p-5 shadow-2xs space-y-3 text-left">
+        <h2 className="text-sm font-bold text-[#4A3026] uppercase tracking-wider">
           Claim Information Summary
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 text-xs font-medium border border-slate-200 rounded p-4 bg-slate-50/50">
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 text-xs font-medium border border-[#D7CBBB] rounded p-4 bg-[#F3EBDD]/50">
           <div>
-            <span className="block text-[10px] text-slate-500 font-bold uppercase">Claim Type</span>
-            <span className="font-bold text-slate-900">{claim.claimType}</span>
+            <span className="block text-[10px] text-[#665D56] font-bold uppercase">Claim Type</span>
+            <span className="font-bold text-[#4A3026]">{claim.claimType}</span>
           </div>
 
           <div>
-            <span className="block text-[10px] text-slate-500 font-bold uppercase">Submitted</span>
-            <span className="font-bold text-slate-900">{claim.submissionDate}</span>
+            <span className="block text-[10px] text-[#665D56] font-bold uppercase">Submitted</span>
+            <span className="font-bold text-[#292421]">{claim.submissionDate}</span>
           </div>
 
           <div>
-            <span className="block text-[10px] text-slate-500 font-bold uppercase">Reported Status</span>
-            <span className="font-bold text-slate-900">{claim.currentStatus}</span>
+            <span className="block text-[10px] text-[#665D56] font-bold uppercase">Reported Status</span>
+            <span className="font-bold text-[#292421]">{claim.currentStatus}</span>
           </div>
 
           <div>
-            <span className="block text-[10px] text-slate-500 font-bold uppercase">Days Elapsed</span>
-            <span className="font-mono font-bold text-blue-900">{daysElapsed} Days</span>
+            <span className="block text-[10px] text-[#665D56] font-bold uppercase">Days Elapsed</span>
+            <span className="font-mono font-bold text-[#5B477D]">{daysElapsed} Days</span>
           </div>
 
           <div>
-            <span className="block text-[10px] text-slate-500 font-bold uppercase">Diagnosis</span>
-            <span className="font-bold text-amber-900">{diagnosis.title}</span>
+            <span className="block text-[10px] text-[#665D56] font-bold uppercase">Diagnosis</span>
+            <span className="font-bold text-[#B7791F]">{diagnosis.title}</span>
           </div>
         </div>
       </div>

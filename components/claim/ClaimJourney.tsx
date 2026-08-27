@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { TimelineStage } from '@/types/claim';
-import { Check } from 'lucide-react';
+import { Check, AlertTriangle } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface ClaimJourneyProps {
@@ -11,15 +11,15 @@ interface ClaimJourneyProps {
 
 export const ClaimJourney: React.FC<ClaimJourneyProps> = ({ stages }) => {
   return (
-    <div className="bg-white rounded-lg border border-slate-200 p-6 shadow-2xs space-y-6">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-200 pb-3">
+    <div className="bg-[#FFFDF8] rounded-lg border border-[#D7CBBB] p-6 shadow-2xs space-y-6">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-[#D7CBBB] pb-3">
         <div>
-          <h2 className="text-lg font-bold text-slate-900 tracking-tight">Claim Journey</h2>
-          <p className="text-xs text-slate-600">
+          <h2 className="text-lg font-bold text-[#4A3026] tracking-tight uppercase">CLAIM JOURNEY</h2>
+          <p className="text-xs text-[#665D56]">
             6-stage SLA milestone progress derived from official Citizen&apos;s Charter targets.
           </p>
         </div>
-        <span className="text-[11px] font-mono font-semibold px-2.5 py-1 bg-slate-100 text-slate-700 rounded border border-slate-200">
+        <span className="text-[11px] font-mono font-semibold px-2.5 py-1 bg-[#E8DDCC] text-[#4A3026] rounded border border-[#D7CBBB]">
           SLA Tracker
         </span>
       </div>
@@ -37,23 +37,23 @@ export const ClaimJourney: React.FC<ClaimJourneyProps> = ({ stages }) => {
               key={stage.id}
               className={cn(
                 'p-3.5 rounded-lg border text-left flex flex-col justify-between space-y-2 relative transition-colors',
-                isCompleted && 'bg-emerald-50/60 border-emerald-300 text-emerald-950',
-                isCurrent && 'bg-blue-50 border-blue-400 text-blue-950 font-semibold ring-2 ring-blue-700/20',
-                isIssue && 'bg-rose-50 border-rose-300 text-rose-950 font-semibold',
-                isPending && 'bg-slate-50 border-slate-200 text-slate-500'
+                isCompleted && 'bg-[#276749]/10 border-[#276749] text-[#292421]',
+                isCurrent && 'bg-[#5B477D]/10 border-[#5B477D] text-[#4A3026] font-bold ring-2 ring-[#5B477D]/30',
+                isIssue && 'bg-[#B7791F]/10 border-[#B7791F] text-[#4A3026] font-bold',
+                isPending && 'bg-[#E8DDCC]/40 border-[#D7CBBB] text-[#665D56]'
               )}
             >
               <div className="flex items-center justify-between">
                 <div
                   className={cn(
                     'w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0',
-                    isCompleted && 'bg-emerald-700 text-white',
-                    isCurrent && 'bg-blue-800 text-white',
-                    isIssue && 'bg-rose-700 text-white',
-                    isPending && 'bg-slate-200 text-slate-600'
+                    isCompleted && 'bg-[#276749] text-white',
+                    isCurrent && 'bg-[#5B477D] text-white',
+                    isIssue && 'bg-[#B7791F] text-white',
+                    isPending && 'bg-[#D7CBBB] text-[#665D56]'
                   )}
                 >
-                  {isCompleted ? <Check className="w-3.5 h-3.5" /> : idx + 1}
+                  {isCompleted ? <Check className="w-3.5 h-3.5" /> : isIssue ? <AlertTriangle className="w-3.5 h-3.5" /> : idx + 1}
                 </div>
 
                 {stage.estimatedDaysRange && (
@@ -69,10 +69,10 @@ export const ClaimJourney: React.FC<ClaimJourneyProps> = ({ stages }) => {
               </div>
 
               <div className="text-[10px] font-mono font-bold pt-1 border-t border-black/10">
-                {isCompleted && <span className="text-emerald-800">Completed</span>}
-                {isCurrent && <span className="text-blue-800">Active Stage</span>}
-                {isIssue && <span className="text-rose-800">Action Required</span>}
-                {isPending && <span className="text-slate-500">Pending</span>}
+                {isCompleted && <span className="text-[#276749]">✓ Completed</span>}
+                {isCurrent && <span className="text-[#5B477D]">● Active Stage</span>}
+                {isIssue && <span className="text-[#B7791F]">⚠ Potential Issue</span>}
+                {isPending && <span className="text-[#665D56]">○ Pending</span>}
               </div>
             </div>
           );

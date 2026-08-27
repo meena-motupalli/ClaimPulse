@@ -3,90 +3,88 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FileText, Menu, X, Activity, Search, ShieldAlert, Info, Clock, Sparkles } from 'lucide-react';
+import { AccessibilityToolbar } from '@/components/ui/AccessibilityToolbar';
+import { Menu, X, ShieldCheck, FileText, Search, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-const NAV_LINKS = [
-  { name: 'Home', href: '/', icon: Activity },
-  { name: 'Track Claim', href: '/track', icon: Search },
-  { name: 'Claim History', href: '/claim', icon: Clock },
-  { name: 'Scam Shield', href: '/scam-shield', icon: ShieldAlert },
-  { name: 'Judge Demo', href: '/demo', icon: Sparkles },
-  { name: 'About', href: '/about', icon: Info },
-];
-
 export const Header: React.FC = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const navLinks = [
+    { name: 'Home', href: '/' },
+    { name: 'Track Claim', href: '/track' },
+    { name: 'Claim History', href: '/claim' },
+    { name: 'Grievance Assistance', href: '/grievance' },
+    { name: 'Scam Shield', href: '/scam-shield' },
+    { name: 'About', href: '/about' },
+  ];
 
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-40 bg-[#FFFDF8] border-b border-[#D7CBBB] shadow-2xs">
+      <AccessibilityToolbar />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b-2 border-[#5B477D]">
         <div className="flex items-center justify-between h-16">
-          {/* Brand Logo & Institutional Subtitle */}
-          <Link href="/" className="flex items-center gap-3 focus:outline-hidden focus:ring-2 focus:ring-blue-600 p-1">
-            <div className="w-10 h-10 rounded-lg bg-blue-800 text-white flex items-center justify-center shadow-xs shrink-0">
-              <FileText className="w-5 h-5" />
+          {/* Brand Logo & Title */}
+          <Link href="/" className="flex items-center gap-3 group">
+            {/* Original ClaimPulse Geometric Logo */}
+            <div className="w-10 h-10 rounded-lg bg-[#4A3026] text-white flex items-center justify-center relative border border-[#37231B] shadow-2xs group-hover:bg-[#37231B] transition-colors">
+              <FileText className="w-5 h-5 text-[#F3EBDD]" />
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#5B477D] rounded-full border-2 border-[#FFFDF8]" />
+              <div className="absolute -bottom-0.5 -right-0.5 w-2 h-2 bg-[#276749] rounded-full" />
             </div>
-            <div className="flex flex-col">
+
+            <div>
               <div className="flex items-center gap-2">
-                <span className="text-lg font-bold text-slate-900 tracking-tight">ClaimPulse</span>
-                <span className="text-[10px] font-semibold uppercase px-2 py-0.5 bg-slate-100 text-slate-700 rounded border border-slate-200">
+                <span className="text-xl font-extrabold tracking-tight text-[#4A3026]">
+                  ClaimPulse
+                </span>
+                <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-[#E8DDCC] text-[#4A3026] rounded border border-[#D7CBBB]">
                   Independent Prototype
                 </span>
               </div>
-              <span className="text-[11px] text-slate-600 font-medium -mt-0.5">
-                Citizen Claim Intelligence System
-              </span>
+              <p className="text-[11px] font-semibold text-[#5B477D] tracking-wide">
+                Citizen Claim Intelligence
+              </p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1" aria-label="Main Navigation">
-            {NAV_LINKS.map((link) => {
-              const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
-              const Icon = link.icon;
+          <nav className="hidden md:flex items-center space-x-1 lg:space-x-2 text-xs font-bold text-[#292421]">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
               return (
                 <Link
-                  key={link.href}
+                  key={link.name}
                   href={link.href}
                   className={cn(
-                    'flex items-center gap-1.5 px-3 py-2 rounded-md text-xs font-semibold transition-all',
+                    'px-3 py-2 rounded-md transition-colors',
                     isActive
-                      ? 'bg-blue-50 text-blue-900 border border-blue-200 font-bold'
-                      : 'text-slate-700 hover:text-slate-900 hover:bg-slate-100'
+                      ? 'bg-[#4A3026] text-[#FFFDF8]'
+                      : 'hover:bg-[#E8DDCC] text-[#292421]'
                   )}
                 >
-                  <Icon className={cn('w-4 h-4', isActive ? 'text-blue-800' : 'text-slate-500')} />
                   {link.name}
                 </Link>
               );
             })}
           </nav>
 
-          {/* Right Action CTA */}
-          <div className="hidden md:flex items-center gap-2">
-            <Link
-              href="/demo"
-              className="inline-flex items-center gap-1 px-3 py-2 bg-amber-50 hover:bg-amber-100 text-amber-950 text-xs font-bold rounded-md border border-amber-300 transition-all"
-            >
-              <Sparkles className="w-3.5 h-3.5 text-amber-700" />
-              Judge Demo
-            </Link>
+          {/* Right Action Button & Mobile Toggle */}
+          <div className="flex items-center gap-3">
             <Link
               href="/track"
-              className="inline-flex items-center justify-center px-4 py-2 bg-blue-800 hover:bg-blue-900 text-white text-xs font-bold rounded-md shadow-xs transition-all"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 bg-[#4A3026] hover:bg-[#37231B] text-[#FFFDF8] font-bold text-xs rounded-md shadow-2xs transition-all border border-[#37231B]"
             >
-              Track Claim
+              <Search className="w-3.5 h-3.5" />
+              <span>Track Claim</span>
             </Link>
-          </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-md text-slate-700 hover:bg-slate-100 focus:outline-hidden focus:ring-2 focus:ring-blue-800"
-              aria-label="Toggle navigation menu"
+              className="md:hidden p-2 rounded-md text-[#4A3026] hover:bg-[#E8DDCC]"
+              aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -96,40 +94,24 @@ export const Header: React.FC = () => {
 
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-6 space-y-1 shadow-md">
-          {NAV_LINKS.map((link) => {
-            const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
-            const Icon = link.icon;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={cn(
-                  'flex items-center gap-3 px-4 py-3 rounded-md text-sm font-semibold transition-colors',
-                  isActive ? 'bg-blue-50 text-blue-900 border border-blue-200' : 'text-slate-700 hover:bg-slate-100'
-                )}
-              >
-                <Icon className={cn('w-4 h-4', isActive ? 'text-blue-800' : 'text-slate-500')} />
-                {link.name}
-              </Link>
-            );
-          })}
-          <div className="pt-3 border-t border-slate-200 flex flex-col gap-2">
+        <div className="md:hidden bg-[#FFFDF8] border-b border-[#D7CBBB] px-4 pt-2 pb-4 space-y-2">
+          {navLinks.map((link) => (
             <Link
-              href="/demo"
+              key={link.name}
+              href={link.href}
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center w-full py-2.5 bg-amber-500 text-slate-950 font-bold rounded-md text-xs shadow-xs"
+              className="block px-3 py-2 rounded-md text-xs font-bold text-[#292421] hover:bg-[#E8DDCC]"
             >
-              <Sparkles className="w-4 h-4 mr-1.5 text-slate-950" />
-              Open Judge Demo Mode
+              {link.name}
             </Link>
+          ))}
+          <div className="pt-2">
             <Link
               href="/track"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center w-full py-2.5 bg-blue-800 text-white font-bold rounded-md text-xs shadow-xs"
+              className="w-full py-2.5 bg-[#4A3026] text-[#FFFDF8] text-center font-bold text-xs rounded-md block"
             >
-              Track My Claim Now
+              Track Claim Now
             </Link>
           </div>
         </div>

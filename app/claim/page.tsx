@@ -6,7 +6,7 @@ import { Claim } from '@/types/claim';
 import { getStoredClaims } from '@/lib/storage';
 import { INITIAL_MOCK_CLAIMS } from '@/data/mockClaims';
 import { analyzeClaim, DEMO_CURRENT_DATE } from '@/lib/claimAnalyzer';
-import { Clock, Search, ArrowRight, ShieldCheck, FileText, Filter } from 'lucide-react';
+import { ArrowRight, Filter } from 'lucide-react';
 
 export default function ClaimListPage() {
   const [claims, setClaims] = useState<Claim[]>([]);
@@ -26,23 +26,23 @@ export default function ClaimListPage() {
   });
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6 text-left">
       {/* Page Title & Filter Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-200 pb-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-[#D7CBBB] pb-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-slate-900">Claim History & Demo Records</h1>
-          <p className="text-xs text-slate-600">
+          <h1 className="text-xl sm:text-2xl font-bold text-[#4A3026] uppercase">Claim History & Demo Records</h1>
+          <p className="text-xs text-[#665D56]">
             View stored claims and pre-configured hackathon demo records.
           </p>
         </div>
 
         {/* Filter Controls */}
         <div className="flex items-center gap-2">
-          <Filter className="w-4 h-4 text-slate-500" />
+          <Filter className="w-4 h-4 text-[#665D56]" />
           <select
             value={filterType}
             onChange={(e) => setFilterType(e.target.value)}
-            className="p-2 bg-white border border-slate-300 rounded text-xs font-semibold text-slate-900"
+            className="p-2 bg-[#FFFDF8] border border-[#D7CBBB] rounded text-xs font-semibold text-[#292421]"
           >
             <option value="ALL">All Claim Statuses</option>
             <option value="SUBMITTED">Submitted / Pending</option>
@@ -53,9 +53,9 @@ export default function ClaimListPage() {
       </div>
 
       {/* Desktop Table View */}
-      <div className="hidden md:block bg-white rounded-lg border border-slate-200 shadow-2xs overflow-hidden">
+      <div className="hidden md:block bg-[#FFFDF8] rounded-lg border border-[#D7CBBB] shadow-2xs overflow-hidden">
         <table className="w-full text-left text-xs">
-          <thead className="bg-slate-100 border-b border-slate-200 font-bold uppercase tracking-wider text-slate-700">
+          <thead className="bg-[#E8DDCC] border-b border-[#D7CBBB] font-bold uppercase tracking-wider text-[#4A3026]">
             <tr>
               <th className="p-3.5">Reference ID</th>
               <th className="p-3.5">Claim Type</th>
@@ -65,20 +65,20 @@ export default function ClaimListPage() {
               <th className="p-3.5 text-right">Action</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-200">
-            {filteredClaims.map((claim) => {
+          <tbody className="divide-y divide-[#D7CBBB]">
+            {filteredClaims.map((claim, idx) => {
               const diag = analyzeClaim(claim, DEMO_CURRENT_DATE);
               return (
-                <tr key={claim.id} className="hover:bg-slate-50 transition-colors font-medium">
-                  <td className="p-3.5 font-mono font-bold text-blue-900">{claim.id}</td>
-                  <td className="p-3.5 font-bold text-slate-900">{claim.claimType}</td>
-                  <td className="p-3.5 text-slate-600">{claim.submissionDate}</td>
-                  <td className="p-3.5 font-semibold text-slate-800">{claim.currentStatus}</td>
-                  <td className="p-3.5 font-semibold text-amber-900">{diag.title}</td>
+                <tr key={claim.id} className={`${idx % 2 === 0 ? 'bg-[#FFFDF8]' : 'bg-[#F3EBDD]/40'} hover:bg-[#E8DDCC]/50 transition-colors font-medium`}>
+                  <td className="p-3.5 font-mono font-bold text-[#5B477D]">{claim.id}</td>
+                  <td className="p-3.5 font-bold text-[#4A3026]">{claim.claimType}</td>
+                  <td className="p-3.5 text-[#665D56]">{claim.submissionDate}</td>
+                  <td className="p-3.5 font-semibold text-[#292421]">{claim.currentStatus}</td>
+                  <td className="p-3.5 font-semibold text-[#B7791F]">{diag.title}</td>
                   <td className="p-3.5 text-right">
                     <Link
                       href={`/claim/${claim.id}`}
-                      className="px-3 py-1.5 bg-blue-800 hover:bg-blue-900 text-white font-bold rounded text-xs inline-flex items-center gap-1 shadow-2xs"
+                      className="px-3 py-1.5 bg-[#4A3026] hover:bg-[#37231B] text-white font-bold rounded text-xs inline-flex items-center gap-1 shadow-2xs border border-[#37231B]"
                     >
                       <span>View</span>
                       <ArrowRight className="w-3 h-3" />
@@ -96,19 +96,19 @@ export default function ClaimListPage() {
         {filteredClaims.map((claim) => {
           const diag = analyzeClaim(claim, DEMO_CURRENT_DATE);
           return (
-            <div key={claim.id} className="p-4 bg-white rounded-lg border border-slate-200 shadow-2xs space-y-2 text-xs">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                <span className="font-mono font-bold text-blue-900">{claim.id}</span>
-                <span className="font-bold text-slate-900">{claim.claimType}</span>
+            <div key={claim.id} className="p-4 bg-[#FFFDF8] rounded-lg border border-[#D7CBBB] shadow-2xs space-y-2 text-xs">
+              <div className="flex items-center justify-between border-b border-[#D7CBBB] pb-2">
+                <span className="font-mono font-bold text-[#5B477D]">{claim.id}</span>
+                <span className="font-bold text-[#4A3026]">{claim.claimType}</span>
               </div>
-              <div className="grid grid-cols-2 gap-2 text-slate-700">
+              <div className="grid grid-cols-2 gap-2 text-[#292421]">
                 <div>Submitted: <strong>{claim.submissionDate}</strong></div>
                 <div>Status: <strong>{claim.currentStatus}</strong></div>
               </div>
-              <div className="pt-1 text-amber-900 font-bold">Diagnosis: {diag.title}</div>
+              <div className="pt-1 text-[#B7791F] font-bold">Diagnosis: {diag.title}</div>
               <Link
                 href={`/claim/${claim.id}`}
-                className="mt-2 w-full py-2 bg-blue-800 text-white font-bold text-xs rounded text-center block"
+                className="mt-2 w-full py-2 bg-[#4A3026] text-white font-bold text-xs rounded text-center block"
               >
                 View Status Details
               </Link>

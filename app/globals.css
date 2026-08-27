@@ -4,31 +4,46 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 40%; /* Government Service Blue #1E40AF */
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 40%;
+    --bg-sand: #F3EBDD;
+    --bg-sand-light: #E8DDCC;
+    --card-bg: #FFFDF8;
+    --brand-brown: #4A3026;
+    --brand-brown-dark: #37231B;
+    --brand-purple: #5B477D;
+    --brand-purple-dark: #463661;
+    --gov-green: #276749;
+    --gov-green-dark: #1E4E37;
+    --gov-amber: #B7791F;
+    --gov-red: #A33A3A;
+    --text-charcoal: #292421;
+    --text-muted: #665D56;
+    --border-sand: #D7CBBB;
+
+    --background: 38 41% 91%; /* #F3EBDD */
+    --foreground: 21 11% 15%; /* #292421 */
+    --card: 45 60% 98%;      /* #FFFDF8 */
+    --card-foreground: 21 11% 15%;
+    --popover: 45 60% 98%;
+    --popover-foreground: 21 11% 15%;
+    --primary: 17 33% 22%;    /* #4A3026 */
+    --primary-foreground: 45 60% 98%;
+    --secondary: 262 27% 38%;  /* #5B477D */
+    --secondary-foreground: 45 60% 98%;
+    --muted: 36 26% 85%;      /* #E8DDCC */
+    --muted-foreground: 27 9% 37%; /* #665D56 */
+    --accent: 262 27% 38%;
+    --accent-foreground: 45 60% 98%;
+    --destructive: 0 47% 43%;  /* #A33A3A */
+    --destructive-foreground: 45 60% 98%;
+    --border: 33 22% 79%;     /* #D7CBBB */
+    --input: 33 22% 79%;
+    --ring: 17 33% 22%;
     --radius: 0.5rem;
   }
 
   body {
-    background-color: #f8fafc;
-    color: #0f172a;
+    background-color: var(--bg-sand);
+    color: var(--text-charcoal);
     font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   }
 
@@ -61,13 +76,14 @@ input[type="search"],
 select,
 textarea {
   border-radius: 0.5rem;
-  border-color: #cbd5e1;
-  background-color: #ffffff;
+  border-color: #D7CBBB;
+  background-color: #FFFDF8;
+  color: #292421;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
-  outline: 2px solid #1d4ed8;
+  outline: 2px solid #4A3026;
   outline-offset: 1px;
 }
