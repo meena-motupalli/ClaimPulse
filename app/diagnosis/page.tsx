@@ -9,6 +9,7 @@ import { DiagnosisCard } from '@/components/claim/DiagnosisCard';
 import { ScenarioSwitcher } from '@/components/claim/ScenarioSwitcher';
 import { RejectionTranslator } from '@/components/claim/RejectionTranslator';
 import { ScreenshotExtractor } from '@/components/claim/ScreenshotExtractor';
+import { SourceTransparencyCard } from '@/components/ai/SourceTransparencyCard';
 import { Activity, Sparkles, RefreshCw, FileText, Upload } from 'lucide-react';
 
 export default function DiagnosisPage() {
@@ -108,6 +109,9 @@ export default function DiagnosisPage() {
 
       {/* 3. LIVE DIAGNOSIS CARD */}
       <DiagnosisCard diagnosis={diagnosis} claimId={activeClaim.id} claimType={activeClaim.claimType} />
+
+      {/* Source Transparency Component */}
+      <SourceTransparencyCard />
     </div>
   );
 }

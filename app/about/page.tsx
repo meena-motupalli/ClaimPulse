@@ -1,6 +1,6 @@
 import React from 'react';
-import Link from 'next/link';
-import { ShieldCheck, Info, Activity, Lock, ArrowRight, CheckCircle2, Code2 } from 'lucide-react';
+import { SourceTransparencyCard } from '@/components/ai/SourceTransparencyCard';
+import { Info, Activity, Lock, Code2, Sparkles } from 'lucide-react';
 
 export const metadata = {
   title: 'About ClaimPulse | EPF Diagnostic Platform',
@@ -37,17 +37,20 @@ export default function AboutPage() {
           <ul className="list-disc pl-4 space-y-1">
             <li>ClaimPulse is NOT an official application of the Employees&apos; Provident Fund Organisation (EPFO).</li>
             <li>ClaimPulse does NOT claim direct access to internal EPFO database servers or private API systems.</li>
-            <li>ClaimPulse NEVER requests or stores UAN Passwords, OTPs, Aadhaar, PAN, or Bank account credentials.</li>
+            <li>ClaimPulse NEVER requests or stores UAN Passwords, OTPs, Aadhaar, PAN, or Bank credentials.</li>
             <li>All analysis is performed deterministically based on public status descriptions and user-provided submission dates.</li>
           </ul>
         </div>
       </div>
 
+      {/* Source Transparency Component */}
+      <SourceTransparencyCard />
+
       {/* Diagnostic Methodology */}
       <div id="methodology" className="space-y-6">
         <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
           <Activity className="w-5 h-5 text-blue-600" />
-          Diagnostic Methodology
+          Diagnostic Methodology & AI Architecture
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -66,16 +69,16 @@ export default function AboutPage() {
           </div>
 
           <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-2">
-            <h3 className="text-sm font-bold text-slate-900">3. Actionable Escalation</h3>
+            <h3 className="text-sm font-bold text-slate-900">3. Responsible AI Layer</h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              When a claim exceeds benchmark timelines, we provide formatted EPFiGMS grievance text rather than leaving citizens stranded without next steps.
+              AI acts as an enhancement layer for natural language translations, grievance text generation, and scam message evaluation. Deterministic rules decide state.
             </p>
           </div>
 
           <div className="p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-2">
             <h3 className="text-sm font-bold text-slate-900">4. Privacy-First Execution</h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              All data entered remains strictly in client-side memory or local browser storage. No user claim data is transmitted to third-party databases.
+              All image uploads and user claim entries are processed in local browser memory. Zero sensitive credentials are requested or logged.
             </p>
           </div>
         </div>
@@ -90,8 +93,8 @@ export default function AboutPage() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-mono">
           <div className="p-3 bg-slate-800 rounded-xl border border-slate-700">Next.js 14 App Router</div>
           <div className="p-3 bg-slate-800 rounded-xl border border-slate-700">TypeScript (Strict)</div>
-          <div className="p-3 bg-slate-800 rounded-xl border border-slate-700">Tailwind CSS</div>
-          <div className="p-3 bg-slate-800 rounded-xl border border-slate-700">Lucide React Icons</div>
+          <div className="p-3 bg-slate-800 rounded-xl border border-slate-700">Zod Validation</div>
+          <div className="p-3 bg-slate-800 rounded-xl border border-slate-700">Gemini AI / Fallback</div>
         </div>
       </div>
     </div>
