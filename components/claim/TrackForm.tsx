@@ -5,11 +5,13 @@ import { useRouter } from 'next/navigation';
 import { ClaimType, ClaimStatusInput } from '@/types/claim';
 import { saveClaim } from '@/lib/storage';
 import { ScreenshotExtractor } from '@/components/claim/ScreenshotExtractor';
+import { useToast } from '@/components/ui/Toast';
 import { ShieldCheck, Upload, AlertCircle, ArrowRight, Lock, CheckCircle2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export const TrackForm: React.FC = () => {
   const router = useRouter();
+  const { showToast } = useToast();
 
   const [claimType, setClaimType] = useState<ClaimType>('Form 19');
   const [submissionDate, setSubmissionDate] = useState<string>('2026-08-12');
@@ -27,6 +29,7 @@ export const TrackForm: React.FC = () => {
     setStatus(extracted.status);
     if (extracted.fieldOffice) setFieldOffice(extracted.fieldOffice);
     if (extracted.rejectionReason) setRejectionReason(extracted.rejectionReason);
+    showToast('Claim information extracted from screenshot.', 'success');
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -51,6 +54,8 @@ export const TrackForm: React.FC = () => {
         fieldOffice: fieldOffice || 'Field Office Pending',
         notes: userNotes,
       });
+
+      showToast('Claim information saved.', 'success');
 
       setTimeout(() => {
         router.push(`/claim/${created.id}`);

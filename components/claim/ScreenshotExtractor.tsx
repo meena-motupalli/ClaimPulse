@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Upload, CheckCircle2, X, Image as ImageIcon, Sparkles, Lock, ArrowRight } from 'lucide-react';
 import { ClaimType, ClaimStatusInput } from '@/types/claim';
+import { useToast } from '@/components/ui/Toast';
 
 interface ExtractedData {
   claimType: ClaimType;
@@ -17,6 +18,7 @@ interface ScreenshotExtractorProps {
 }
 
 export const ScreenshotExtractor: React.FC<ScreenshotExtractorProps> = ({ onExtracted }) => {
+  const { showToast } = useToast();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
@@ -51,6 +53,7 @@ export const ScreenshotExtractor: React.FC<ScreenshotExtractorProps> = ({ onExtr
     setPreviewUrl(null);
     setUploadProgress(0);
     setExtractedData(null);
+    showToast('Screenshot removed.', 'info');
   };
 
   const handleRunMockExtraction = () => {

@@ -4,12 +4,14 @@ import React, { useState } from 'react';
 import { Claim } from '@/types/claim';
 import { Copy, Check, ExternalLink, ShieldCheck, FileText, AlertCircle } from 'lucide-react';
 import { formatDate } from '@/lib/utils';
+import { useToast } from '@/components/ui/Toast';
 
 interface GrievanceDraftProps {
   claim?: Claim;
 }
 
 export const GrievanceDraft: React.FC<GrievanceDraftProps> = ({ claim }) => {
+  const { showToast } = useToast();
   const [claimType, setClaimType] = useState<string>(claim?.claimType || 'Form 19');
   const [submissionDate, setSubmissionDate] = useState<string>(claim?.submissionDate || '2026-08-12');
   const [fieldOffice, setFieldOffice] = useState<string>(claim?.fieldOffice || 'RO Gurgaon');
@@ -49,7 +51,8 @@ YOURS FAITHFULLY,
   const handleCopy = () => {
     navigator.clipboard.writeText(generatedGrievanceText);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
+    showToast('Grievance copied to clipboard.', 'success');
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (

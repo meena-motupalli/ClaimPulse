@@ -3,13 +3,14 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ShieldCheck, Menu, X, Activity, Search, ShieldAlert, Info, Clock } from 'lucide-react';
+import { ShieldCheck, Menu, X, Activity, Search, ShieldAlert, Info, Clock, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const NAV_LINKS = [
   { name: 'Home', href: '/', icon: Activity },
   { name: 'Track Claim', href: '/track', icon: Search },
   { name: 'Claim History', href: '/claim', icon: Clock },
+  { name: 'Judge Demo Mode', href: '/demo', icon: Sparkles },
   { name: 'Scam Shield', href: '/scam-shield', icon: ShieldAlert },
   { name: 'About', href: '/about', icon: Info },
 ];
@@ -19,19 +20,7 @@ export const Header: React.FC = () => {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
-      {/* Top Banner Notice */}
-      <div className="bg-slate-900 text-slate-200 text-xs py-1.5 px-4 text-center border-b border-slate-800">
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-2">
-          <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="font-medium text-slate-300">Independent Diagnostic Platform:</span>
-          <span className="text-slate-400 hidden sm:inline">Never enter your UAN Password, OTP, or Bank Details.</span>
-          <Link href="/about" className="underline text-blue-300 hover:text-blue-200 font-medium ml-1">
-            Learn More
-          </Link>
-        </div>
-      </div>
-
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Brand Logo */}
@@ -60,7 +49,7 @@ export const Header: React.FC = () => {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    'flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm font-medium transition-all',
+                    'flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all',
                     isActive
                       ? 'bg-blue-50 text-blue-700 font-semibold shadow-2xs'
                       : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70'
@@ -74,10 +63,17 @@ export const Header: React.FC = () => {
           </nav>
 
           {/* Right Action CTA */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2">
+            <Link
+              href="/demo"
+              className="inline-flex items-center gap-1 px-3 py-2 bg-amber-50 hover:bg-amber-100 text-amber-900 text-xs font-bold rounded-xl border border-amber-300 transition-all"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+              Demo Mode
+            </Link>
             <Link
               href="/track"
-              className="inline-flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-xl transition-all shadow-sm shadow-blue-500/20 active:scale-98"
+              className="inline-flex items-center justify-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-all shadow-sm shadow-blue-500/20 active:scale-98"
             >
               Track Claim
             </Link>
@@ -119,11 +115,19 @@ export const Header: React.FC = () => {
               </Link>
             );
           })}
-          <div className="pt-3 border-t border-slate-100">
+          <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
+            <Link
+              href="/demo"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center justify-center w-full py-3 bg-amber-500 text-slate-950 font-bold rounded-xl text-sm shadow-sm"
+            >
+              <Sparkles className="w-4 h-4 mr-1.5 text-slate-950" />
+              Open Judge Demo Mode
+            </Link>
             <Link
               href="/track"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center w-full py-3 bg-blue-600 text-white font-medium rounded-xl text-base shadow-sm"
+              className="flex items-center justify-center w-full py-3 bg-blue-600 text-white font-bold rounded-xl text-sm shadow-sm"
             >
               Track My Claim Now
             </Link>

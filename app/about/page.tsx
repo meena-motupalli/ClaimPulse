@@ -1,6 +1,6 @@
 import React from 'react';
 import { SourceTransparencyCard } from '@/components/ai/SourceTransparencyCard';
-import { Info, Activity, Lock, Code2, Sparkles } from 'lucide-react';
+import { Info, Activity, Lock, Code2, AlertTriangle, ExternalLink, ShieldCheck } from 'lucide-react';
 
 export const metadata = {
   title: 'About ClaimPulse | EPF Diagnostic Platform',
@@ -45,6 +45,35 @@ export default function AboutPage() {
 
       {/* Source Transparency Component */}
       <SourceTransparencyCard />
+
+      {/* EXPLICIT LIMITATIONS SECTION */}
+      <div id="limitations" className="bg-rose-50/50 border border-rose-200/80 rounded-3xl p-6 sm:p-8 space-y-4">
+        <div className="flex items-center gap-2 text-rose-900 font-bold text-lg">
+          <AlertTriangle className="w-5 h-5 text-rose-600" />
+          Platform Limitations & Ethical Boundaries
+        </div>
+        <p className="text-xs text-rose-950 leading-relaxed">
+          To maintain national hackathon credibility and strict ethical transparency, citizens must be aware of the explicit operational limits of ClaimPulse:
+        </p>
+        <ul className="space-y-2 text-xs text-slate-800">
+          <li className="p-3 bg-white rounded-xl border border-rose-100 flex items-start gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-500 mt-1.5 shrink-0" />
+            <span><strong>Private Systems Access:</strong> ClaimPulse does not access EPFO&apos;s private backend systems or officer queues.</span>
+          </li>
+          <li className="p-3 bg-white rounded-xl border border-rose-100 flex items-start gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-500 mt-1.5 shrink-0" />
+            <span><strong>Internal Bottleneck Inference:</strong> ClaimPulse cannot determine internal field office processing bottlenecks solely from a public status string.</span>
+          </li>
+          <li className="p-3 bg-white rounded-xl border border-rose-100 flex items-start gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-500 mt-1.5 shrink-0" />
+            <span><strong>AI Content Nature:</strong> AI-generated explanations are purely informational and do not represent government decisions.</span>
+          </li>
+          <li className="p-3 bg-white rounded-xl border border-rose-100 flex items-start gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-rose-500 mt-1.5 shrink-0" />
+            <span><strong>Official Verification:</strong> Users should verify important claim actions directly through official EPFO channels (Member e-Sewa & EPFiGMS).</span>
+          </li>
+        </ul>
+      </div>
 
       {/* Diagnostic Methodology */}
       <div id="methodology" className="space-y-6">

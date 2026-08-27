@@ -15,16 +15,19 @@ export const Footer: React.FC = () => {
               </div>
               <span className="text-lg font-bold text-white tracking-tight">ClaimPulse</span>
             </div>
+            <p className="text-xs text-amber-400 font-semibold tracking-wide uppercase">
+              Independent citizen-service prototype
+            </p>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Citizen-side diagnostic & guidance platform for EPFO claim journeys. Turning opaque status strings into actionable clarity.
+              Turning opaque PF claim status strings into a clear visual journey and actionable next steps.
             </p>
             <div className="p-3 bg-slate-800/80 rounded-xl border border-slate-700/80 text-xs text-slate-300 space-y-1">
               <div className="flex items-center gap-1.5 font-semibold text-amber-400">
                 <Lock className="w-3.5 h-3.5 shrink-0" />
-                Privacy & Safety Notice
+                Privacy & Safety Guarantee
               </div>
               <p className="text-[11px] text-slate-400">
-                ClaimPulse is an independent hackathon prototype. We do NOT ask for UAN Password, OTP, Aadhaar, PAN, or Bank credentials.
+                Never enter UAN Password, OTP, Aadhaar, PAN, or Bank credentials.
               </p>
             </div>
           </div>
@@ -44,8 +47,13 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link href="/demo" className="hover:text-white font-bold text-amber-400 transition-colors">
+                  Judge Demo Mode (/demo)
+                </Link>
+              </li>
+              <li>
                 <Link href="/claim" className="hover:text-white transition-colors">
-                  Claim History & Demo
+                  Claim History & Demo Scenarios
                 </Link>
               </li>
               <li>
@@ -63,7 +71,7 @@ export const Footer: React.FC = () => {
 
           {/* Col 3: Protection & Educational */}
           <div className="space-y-3">
-            <h4 className="text-xs font-semibold text-slate-200 uppercase tracking-wider">Citizen Safety</h4>
+            <h4 className="text-xs font-semibold text-slate-200 uppercase tracking-wider">Citizen Safety & Disclaimers</h4>
             <ul className="space-y-2 text-xs">
               <li>
                 <Link href="/scam-shield" className="hover:text-white transition-colors flex items-center gap-1.5">
@@ -77,8 +85,8 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/about#methodology" className="hover:text-white transition-colors">
-                  Diagnostic Methodology
+                <Link href="/about#limitations" className="hover:text-white text-amber-300 transition-colors">
+                  Platform Limitations & Disclaimers
                 </Link>
               </li>
             </ul>
@@ -117,7 +125,7 @@ export const Footer: React.FC = () => {
 
         <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
           <p>© 2026 ClaimPulse Prototype. Built for Hackathon demonstration.</p>
-          <p>Not affiliated with EPFO or Ministry of Labour & Employment.</p>
+          <p>Independent citizen-service prototype. Not affiliated with EPFO or Ministry of Labour & Employment.</p>
         </div>
       </div>
     </footer>
